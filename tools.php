@@ -837,3 +837,40 @@ function tools_lat_log($endereco, $cidade){
         return array('lat' => $lat, 'long' => $long);
 
 }
+
+function curl_envia_arquivo($url, $arquivo, $nome){
+    // somente é aceito pdf, png, jpeg, jpg e mp4
+
+    set_time_limit(0);
+
+    $mime = mime_content_type($arquivo);
+
+    if(!$mime || (!strstr($mime, "video/") && !strstr($mime, "image/") && !strstr($mime, "/pdf") && !strstr($mime, "text/plain") && !strstr($mime, "text/html")))
+        return false;
+
+    $cfile = curl_file_create($arquivo,$mime,$nome);
+    // $cfile = new CURLFile($arquivo,$mime,'arquivo');
+
+    // Assign POST data
+    $imgdata = array('arquivo' => $cfile);
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url.'?c4T1ty4Rt4641tY6ge2v41Ib462G54wu6750n651oM0I6851i0ve6Y15');
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $imgdata);
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+
+    $r = curl_exec($curl); 
+    $erro = curl_error($curl);
+
+    curl_close($curl);
+
+    if($r){
+        $json = json_decode($r,1);
+        if(is_array($json))
+            return $json;
+    }
+    return false;
+}

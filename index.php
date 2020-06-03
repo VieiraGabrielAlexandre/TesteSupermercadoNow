@@ -2,6 +2,8 @@
 	$app_basedir = dirname(__FILE__);
 	require_once('./bootstrap.php');
 
+	HEADER('Location: /admin');
+
 	$urlhandler_map = array();
 	$urlhandler_map['#default'] = array('#callback' => 'page_homepage', '#access' => true);
 	$urlhandler_map['#permission_denied'] = array('#callback' => 'pages_login_redirect', '#access' => true);
