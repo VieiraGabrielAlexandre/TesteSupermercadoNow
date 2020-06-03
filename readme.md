@@ -35,6 +35,8 @@ Va no arquivos hosts do windows e cria os encaminhamentos.
 127.0.0.1       testesupernow.com.br
 127.0.0.1       www.testesupernow.com.br
 
+Por fim execute o arquivo de sql dentro do projeto para ter a base em que foi desenvolvido.
+
 -------------------------------------------------------------
 
 Caso não funcione revise o arquivo settings-devlocal.php e verifique se as confs batem com os dados do BD, etc.
