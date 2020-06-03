@@ -5,7 +5,7 @@ $template_vars = array();
 $current_template = '2020';
 
 $template_default_vars = array(
-	'page_title' => 'SITE_NAME',
+	'page_title' => 'Teste Supermercado Now',
 	'meta_keywords' => 'gav',
 	'meta_description' => "gav.",
 	'default_contact_email' => 'name@testesupernow.com.br',
